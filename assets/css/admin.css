@@ -1,0 +1,123 @@
+/* Admin layout mapped to Obsidian Gold theme */
+:root{
+  /* Pulls og variables from style.css */
+  --md-primary: var(--og-gold);
+  --md-primary-dark: var(--og-rich-gold);
+  --md-accent: var(--og-gold);
+  --md-bg: var(--og-black);
+  --md-surface: var(--og-charcoal);
+  --md-text: #E5E7EB;
+  --md-muted: var(--og-soft-gray);
+  --md-border: #2A2D31;
+}
+
+html,body{height:100%;}
+body{
+  background:var(--md-bg);
+  color:var(--md-text);
+  font-family: 'Inter', 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
+}
+
+/* Shell */
+.layout{
+  display:flex;
+  min-height:100vh;
+  width:100%;
+}
+
+/* Sidebar */
+.sidebar{
+  width:260px;
+  background:var(--md-surface);
+  border-right:1px solid var(--md-border);
+  position:sticky;
+  top:0;
+  height:100vh;
+  padding:16px 12px;
+}
+.sidebar .brand{
+  display:flex;align-items:center;gap:10px;
+  font-weight:700;font-size:18px;color:var(--md-primary);
+  padding:6px 10px;margin-bottom:12px;
+}
+.sidebar .search{position:relative;margin:8px 6px 14px;}
+.sidebar .search input{
+  width:100%;
+  border:1px solid var(--md-border);
+  border-radius:10px;
+  padding:10px 36px 10px 12px;
+  background:#14161A;
+  color: var(--md-text);
+}
+.sidebar .search input::placeholder{ color:#9AA0A6; }
+.sidebar .search i{position:absolute;right:10px;top:50%;transform:translateY(-50%);color:#9ca3af;}
+
+.nav-section-title{color:#9aa0a6;font-size:12px;font-weight:700;text-transform:uppercase;margin:14px 10px 6px;}
+.nav-list{list-style:none;padding:0;margin:0;}
+.nav-list li a{
+  display:flex;align-items:center;gap:10px;
+  padding:10px 12px;border-radius:10px;color:#d1d5db;text-decoration:none;font-weight:500;
+  transition: background .18s ease, color .18s ease, box-shadow .18s ease;
+}
+.nav-list li a:hover,.nav-list li a.active{background:rgba(199,163,75,0.12);color:var(--md-primary);} 
+.nav-list li a:focus-visible{outline:2px solid rgba(199,163,75,.55); outline-offset: 2px;}
+.nav-list li a.active{position:relative;}
+.nav-list li a.active::before{content:"";position:absolute;left:6px;top:8px;bottom:8px;width:3px;border-radius:2px;background:linear-gradient(180deg, rgba(199,163,75,.95), rgba(168,132,42,.95));}
+.nav-list i{width:20px;text-align:center;}
+.badge-soft{background:rgba(199,163,75,0.15);color:var(--md-primary);border-radius:30px;font-size:11px;padding:2px 8px;margin-left:auto;}
+
+/* Header (Top App Bar) */
+.main{
+  flex:1;display:flex;flex-direction:column;min-width:0;
+}
+.topbar{
+  height:64px;background:var(--og-charcoal);color:#fff;display:flex;align-items:center;justify-content:space-between;
+  padding:0 20px;border-bottom:1px solid var(--md-border);box-shadow:0 2px 10px rgba(0,0,0,.2);position:sticky;top:0;z-index:100;
+}
+.topbar .title{font-weight:600;letter-spacing:.2px;}
+.topbar .actions{display:flex;align-items:center;gap:10px;}
+.topbar .icon-btn{width:36px;height:36px;border-radius:50%;display:inline-flex;align-items:center;justify-content:center;color:var(--md-primary);background:rgba(199,163,75,0.1)}
+.topbar .avatar{width:32px;height:32px;border-radius:50%;object-fit:cover;border:2px solid rgba(255,255,255,.35)}
+
+.content{
+  padding:20px; /* pages can still use Bootstrap containers inside */
+}
+
+/* Cards tweak to look material */
+.card{border:1px solid var(--md-border);border-radius:14px;background:var(--md-surface);box-shadow:inset 0 1px 0 rgba(255,255,255,.02);} 
+.card-header{background:var(--md-surface);border-bottom:1px solid var(--md-border);border-top-left-radius:14px;border-top-right-radius:14px;}
+
+/* Utilities */
+.text-muted-2{color:var(--md-muted)!important}
+.shadow-inset{box-shadow: inset 0 1px 2px rgba(0,0,0,.04)}
+
+/* Responsive */
+@media (max-width: 992px){
+  .sidebar{position:fixed;left:-280px;z-index:1200;transition:left .25s ease;}
+  .sidebar.open{left:0;}
+  .overlay{position:fixed;inset:0;background:rgba(0,0,0,.35);z-index:1100;display:none;}
+  .overlay.show{display:block;}
+}
+
+/* Enhanced admin visuals */
+.stat-card .card-body{padding:18px}
+.stat-card i{color:var(--md-primary)}
+.dashboard-card .card-body{padding:18px}
+.dashboard-card .fw-bold{font-size:22px}
+
+/* Quick actions */
+.quick-actions{display:grid;grid-template-columns:repeat(auto-fill,minmax(220px,1fr));gap:12px}
+.quick-actions .qa-item{display:flex;align-items:center;gap:10px;padding:12px;border:1px solid var(--md-border);border-radius:12px;background:linear-gradient(180deg, rgba(255,255,255,.02), rgba(0,0,0,.08));transition:transform .15s ease, background .15s ease}
+.quick-actions .qa-item i{color:var(--md-primary)}
+.quick-actions .qa-item:hover{transform:translateY(-2px);background:linear-gradient(180deg, rgba(255,255,255,.04), rgba(0,0,0,.08))}
+
+/* Tables */
+.table thead th{border-bottom:1px solid var(--md-border);color:#cbd5e1;font-weight:600}
+.table td,.table th{border-color:var(--md-border)}
+
+/* Buttons */
+.btn{border-radius:10px}
+.btn-outline-secondary{color:#cbd5e1;border-color:var(--md-border)}
+.btn-outline-secondary:hover{background:rgba(255,255,255,.03)}
+.btn-primary{background:linear-gradient(180deg, var(--md-primary), var(--md-primary-dark));border:0}
+.btn-success{background:linear-gradient(180deg, #22c55e, #16a34a);border:0}
